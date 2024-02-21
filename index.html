@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>calculator</title>
+  <!-- daisy ui -->
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css" rel="stylesheet" type="text/css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+
+<body class="bg-gray-200 h-screen flex justify-center items-center font-bold">
+  <div class="bg-white p-8 rounded shadow-md">
+    <div class="grid grid-cols-4 gap-4">
+      <input id="display" class="col-span-4 p-2 text-right text-4xl font-bold outline-none bg-slate-300" readonly>
+
+      <button onclick="removeAppend('cel')" class="col-span-2 bg-gray-300 p-4 rounded hover:bg-gray-400">C</button>
+      <button onclick="deleteNumber()" class="bg-gray-300 p-4 rounded hover:bg-gray-400">DEL</button>
+      <button onclick="appendToDisplay('/')" class="bg-yellow-400 p-4 rounded hover:bg-yellow-500">/</button>
+
+      <button onclick="appendToDisplay('7')" id="number-7" class="p-4 rounded hover:bg-gray-300">7</button>
+      <button onclick="appendToDisplay('8')" id="number-8" class="p-4 rounded hover:bg-gray-300">8</button>
+      <button onclick="appendToDisplay('9')" id="number-9" class="p-4 rounded hover:bg-gray-300">9</button>
+      <button onclick="appendToDisplay('*')" class="bg-yellow-400 p-4 rounded hover:bg-yellow-500">*</button>
+
+      <button onclick="appendToDisplay('4')" class="p-4 rounded hover:bg-gray-300">4</button>
+      <button onclick="appendToDisplay('5')" id="number-five" class="p-4 rounded hover:bg-gray-300">5</button>
+      <button onclick="appendToDisplay('6')" id="number-s" class="p-4 rounded hover:bg-gray-300">6</button>
+      <button id="yellow" class="bg-yellow-400 p-4 rounded hover:bg-yellow-500">-</button>
+
+      <button onclick="appendToDisplay('1')" id="number-1" class="p-4 rounded hover:bg-gray-300">1</button>
+      <button onclick="appendToDisplay('2')" id="number-2" class="p-4 rounded hover:bg-gray-300">2</button>
+      <button onclick="appendToDisplay('3')" id="number-3" class="p-4 rounded hover:bg-gray-300">3</button>
+      <button onclick="appendToDisplay('+')" class="bg-yellow-400 p-4 rounded hover:bg-yellow-500">+</button>
+
+      <button onclick="appendToDisplay('0')" id="number-0" class="col-span-2 p-4 rounded hover:bg-gray-300">0</button>
+      <button onclick="appendToDisplay('.')" class="p-4 rounded hover:bg-gray-300">.</button>
+      <button onclick="calculate()" id="count" class="bg-green-400 col-span-2 p-4 rounded hover:bg-green-500">=</button>
+    </div>
+  </div>
+  <script>
+    let display = document.getElementById('display');
+
+    function appendToDisplay(value) {
+      display.value = display.value + value;
+
+    }
+    function removeAppend(value) {
+      display.value = '';
+    }
+    function deleteNumber() {
+      display.value = display.value.slice(0, -1)
+    }
+    function calculate() {
+      const inputValue = document.getElementById('display').value;
+      if (inputValue != '') {
+        let result = eval(inputValue);
+        document.getElementById('display').value = result
+      }
+      else {
+        console.log('sorry');
+      }
+    }
+
+  </script>
+
+  <!-- <script src="calculator.js"></script> -->
+</body>
+
+</html>
